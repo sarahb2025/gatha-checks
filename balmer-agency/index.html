@@ -8,88 +8,83 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#0B1428;--navy2:#132040;--mint:#7CF0E0;--ink:#F4F7FB;--muted:#9AA7BF;--good:#4ADE80;--mid:#F2C94C;--bad:#FF7A7A;--card:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.03));--line:rgba(255,255,255,.08)}
+  :root{--indigo:#0F1F47;--indigo2:#132A5E;--page:#EEF3F8;--ink:#14213D;--muted:#5B6B8A;--hero-muted:#D6DEEE;--mint:#7CF0E0;--blue:#1A73E8;--blue2:#1557B0;--good:#1E9E5A;--mid:#D98B00;--bad:#D7263D;--line:#E2E8F2;--card-sh:0 24px 60px -30px rgba(15,31,71,.35)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Poppins,system-ui,sans-serif;background:var(--navy);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
-  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
+  html{background:var(--page)}
+  body{font-family:Poppins,system-ui,sans-serif;background:var(--page);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .hero{background:linear-gradient(180deg,var(--indigo) 0%,var(--indigo2) 55%,#3F6AA6 100%);color:#fff;padding:0 0 120px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 30%,rgba(255,255,255,.55) 50%,transparent 51%),radial-gradient(1px 1px at 78% 18%,rgba(255,255,255,.5) 50%,transparent 51%),radial-gradient(1.5px 1.5px at 60% 65%,rgba(255,255,255,.45) 50%,transparent 51%),radial-gradient(1px 1px at 30% 80%,rgba(255,255,255,.4) 50%,transparent 51%),radial-gradient(1px 1px at 90% 70%,rgba(255,255,255,.4) 50%,transparent 51%),radial-gradient(1px 1px at 45% 12%,rgba(255,255,255,.5) 50%,transparent 51%);pointer-events:none}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;position:relative}
+  header{display:flex;align-items:center;justify-content:space-between;padding:22px 0 56px}
   .logo{display:inline-block;line-height:0}
   .logo svg{display:block}
-  .tag{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
-  h1{font-size:clamp(28px,5vw,40px);font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+  .tag{font-size:12px;color:var(--hero-muted);text-transform:uppercase;letter-spacing:.12em}
+  .pill{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .pill::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:8px;vertical-align:middle}
+  h1{font-size:clamp(30px,5vw,44px);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:14px;max-width:720px}
   h1 em{font-style:normal;color:var(--mint)}
-  .lead{color:var(--muted);font-size:17px;max-width:560px;margin-bottom:40px}
-  .score{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px}
-  .engine{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
-  .engine .name{font-size:13px;color:var(--muted);margin-bottom:10px}
-  .engine .verdict{font-size:22px;font-weight:600;line-height:1.2}
+  .lead{color:var(--hero-muted);font-size:17px;max-width:600px}
+  .sheet{margin-top:-80px;position:relative}
+  .score{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+  .engine{background:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--card-sh)}
+  .engine .name{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:8px}
+  .engine .verdict{font-size:22px;font-weight:700;line-height:1.2;letter-spacing:-.01em}
   .engine .note{font-size:13px;color:var(--muted);margin-top:8px}
   .good .verdict{color:var(--good)} .mid .verdict{color:var(--mid)} .bad .verdict{color:var(--bad)}
-  h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 16px}
-  section{margin-bottom:44px}
-  .prompt{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:12px}
-  .prompt .q{font-weight:500;margin-bottom:12px}
-  .prompt .q::before{content:"“";color:var(--mint)} .prompt .q::after{content:"”";color:var(--mint)}
-  .row{display:flex;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
-  .row:first-of-type{border-top:0}
-  .row b{flex:0 0 120px;font-weight:500;color:var(--muted)}
-  .gap{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
-  .gap:first-child{border-top:0}
-  .gap .n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--mint);color:var(--navy);font-weight:600;font-size:13px;display:grid;place-items:center}
-  .gap p{font-size:15px} .gap small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-  .cta{background:var(--navy2);border:1px solid var(--line);border-radius:18px;padding:32px 28px;text-align:center}
-  .cta h3{font-size:24px;font-weight:600;margin-bottom:8px;letter-spacing:-.02em}
-  .cta p{color:var(--muted);margin-bottom:22px}
-  .btn{display:inline-block;background:var(--mint);color:var(--navy);font-weight:600;padding:14px 26px;border-radius:999px;text-decoration:none;font-size:15px;box-shadow:0 0 0 1px rgba(124,240,224,.35),0 8px 28px rgba(124,240,224,.28)}
-  .btn.ghost{background:transparent;box-shadow:none;color:var(--ink);border:1px solid var(--line);margin-left:10px}
-  .cta .alt{margin-top:18px;font-size:14px;color:var(--muted)}
-  .cta .alt a{color:var(--mint);text-decoration:none}
-  footer{margin-top:48px;text-align:center;font-size:13px;color:var(--muted)}
-  footer a{color:var(--mint);text-decoration:none}
-  @media (max-width:560px){.score{grid-template-columns:1fr}.btn.ghost{margin:10px 0 0}.row b{flex-basis:90px}}
-  .ev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
-  .ev .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-  .ev .t b{font-weight:500}
-  .ev .t span{font-size:13px;color:var(--muted)}
-  .ev img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
-  .ev .cap{font-size:13px;color:var(--muted);margin-top:8px}
-  .why{background:var(--card);border-left:3px solid var(--mint);border-radius:0 12px 12px 0;padding:16px 18px;font-size:15px}
+  section{margin-bottom:36px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 14px}
+  .prompt{background:#fff;border-radius:18px;padding:22px 24px;box-shadow:var(--card-sh);margin-bottom:14px}
+  .prompt .q{font-weight:600;font-size:18px}
+  .prompt .q::before{content:"“";color:var(--blue)} .prompt .q::after{content:"”";color:var(--blue)}
+  .ev{background:#fff;border-radius:18px;padding:18px;box-shadow:var(--card-sh);margin-bottom:14px}
+  .ev .t{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .ev .t b{font-weight:600;display:inline-flex;align-items:center;gap:8px}
+  .ev .t b::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--bad)}
+  .ev.good .t b::before{background:var(--good)} .ev.mid .t b::before{background:var(--mid)}
+  .ev .t span{font-size:12px;color:var(--muted);background:var(--page);padding:4px 10px;border-radius:999px}
+  .ev img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+  .ev .cap{font-size:14px;color:var(--ink);margin-top:10px}
+  .why{background:#fff;border-radius:18px;padding:22px 24px;box-shadow:var(--card-sh);border-left:4px solid var(--blue);font-size:15px}
+  .cta{background:var(--indigo);color:#fff;border-radius:22px;padding:38px 28px;text-align:center;position:relative;overflow:hidden}
+  .cta h3{font-size:26px;font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
+  .cta p{color:var(--hero-muted);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto}
+  .btn{display:inline-block;background:var(--blue);color:#fff;font-weight:600;padding:14px 26px;border-radius:12px;text-decoration:none;font-size:15px}
+  .btn:hover{background:var(--blue2)}
+  .btn.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);margin-left:10px}
+  .btn.ghost:hover{background:rgba(255,255,255,.14)}
+  .cta .alt{margin-top:20px;font-size:14px;color:var(--hero-muted)}
+  .cta .alt a{color:var(--mint);text-decoration:none;font-weight:500}
+  footer{padding:40px 0 48px;text-align:center;font-size:13px;color:var(--muted)}
+  footer a{color:var(--blue);text-decoration:none;font-weight:500}
+  @media (max-width:600px){.score{grid-template-columns:1fr}.btn.ghost{margin:10px 0 0}.hero{padding-bottom:100px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a class="logo" href="https://gatha.ai" aria-label="Gatha"><svg width="118" height="40" viewBox="0 0 118 40" role="img" aria-label="Gatha — Get found"><text x="0" y="24" font-family="Poppins,system-ui,sans-serif" font-weight="700" font-size="26" letter-spacing="1.5" fill="#F4F7FB">GATH</text><polygon points="84,25 95,2 106,25 100.5,25 95,13.5 89.5,25" fill="#7CF0E0"/><text x="1" y="38" font-family="Poppins,system-ui,sans-serif" font-weight="600" font-size="8.5" letter-spacing="2.6" fill="#9AA7BF">GET FOUND</text></svg></a>
-    <div class="tag">AI search check · 9 Oct 2026</div>
-  </header>
+<div class="hero">
+  <div class="wrap">
+    <header>
+      <a class="logo" href="https://gatha.ai" aria-label="Gatha"><svg width="118" height="40" viewBox="0 0 118 40" role="img" aria-label="Gatha — Get found"><text x="0" y="24" font-family="Poppins,system-ui,sans-serif" font-weight="700" font-size="26" letter-spacing="1.5" fill="#FFFFFF">GATH</text><polygon points="84,25 95,2 106,25 100.5,25 95,13.5 89.5,25" fill="#7CF0E0"/><text x="1" y="38" font-family="Poppins,system-ui,sans-serif" font-weight="600" font-size="8.5" letter-spacing="2.6" fill="#D6DEEE">GET FOUND</text></svg></a>
+      <div class="tag">AI search check · 9 Oct 2026</div>
+    </header>
+    <div class="pill">Checked 9 Oct 2026</div>
+    <h1>Here's where <em>Balmer Agency</em> lands when people ask AI.</h1>
+    <p class="lead">We asked ChatGPT, Claude and Perplexity one question your customers ask. Here's what came back, screenshots included.</p>
+  </div>
+</div>
 
-  <h1>Here's where <em>Balmer Agency</em> lands when people ask AI.</h1>
-  <p class="lead">We asked ChatGPT, Claude and Perplexity one question your customers ask. Here's what came back, screenshots included.</p>
-
+<div class="wrap sheet">
   <div class="score">
-    <div class="engine bad">
-      <div class="name">ChatGPT</div>
-      <div class="verdict">Not mentioned</div>
-      <div class="note">KPMG, Deloitte, Accenture, Collective Campus, Synap AI named</div>
-    </div>
-    <div class="engine bad">
-      <div class="name">Claude</div>
-      <div class="verdict">Not mentioned</div>
-      <div class="note">Enterprise Monkey and Team 400 named</div>
-    </div>
-    <div class="engine bad">
-      <div class="name">Perplexity</div>
-      <div class="verdict">Not mentioned</div>
-      <div class="note">Mantel, Deloitte, Lumen & Lever, Kernel Flow named</div>
-    </div>
+    <div class="engine bad"><div class="name">ChatGPT</div><div class="verdict">Not mentioned</div><div class="note">KPMG, Deloitte, Accenture, Collective Campus, Synap AI named</div></div>
+    <div class="engine bad"><div class="name">Claude</div><div class="verdict">Not mentioned</div><div class="note">Enterprise Monkey and Team 400 named</div></div>
+    <div class="engine bad"><div class="name">Perplexity</div><div class="verdict">Not mentioned</div><div class="note">Mantel, Deloitte, Lumen & Lever, Kernel Flow named</div></div>
   </div>
 
   <section>
     <h2>What we asked</h2>
     <div class="prompt"><div class="q">Who are the best AI strategy consultants in Melbourne?</div></div>
-    <div class="ev"><div class="t"><b>ChatGPT</b><span>9 Oct 2026</span></div><img src="img/chatgpt.jpg" alt="ChatGPT answer" loading="lazy"><div class="cap">Shortlisted seven firms. Balmer Agency not among them.</div></div>
-    <div class="ev"><div class="t"><b>Claude</b><span>9 Oct 2026</span></div><img src="img/claude.jpg" alt="Claude answer" loading="lazy"><div class="cap">Named two Melbourne boutiques plus the big four. Balmer Agency not among them.</div></div>
-    <div class="ev"><div class="t"><b>Perplexity</b><span>9 Oct 2026</span></div><img src="img/perplexity.jpg" alt="Perplexity answer" loading="lazy"><div class="cap">Shortlisted four firms and three named individuals. Balmer Agency not among them.</div></div>
+    <div class="ev bad"><div class="t"><b>ChatGPT</b><span>9 Oct 2026</span></div><img src="img/chatgpt.jpg" alt="ChatGPT answer" loading="lazy"><div class="cap">Shortlisted seven firms. Balmer Agency not among them.</div></div>
+    <div class="ev bad"><div class="t"><b>Claude</b><span>9 Oct 2026</span></div><img src="img/claude.jpg" alt="Claude answer" loading="lazy"><div class="cap">Named two Melbourne boutiques plus the big four. Balmer Agency not among them.</div></div>
+    <div class="ev bad"><div class="t"><b>Perplexity</b><span>9 Oct 2026</span></div><img src="img/perplexity.jpg" alt="Perplexity answer" loading="lazy"><div class="cap">Shortlisted four firms and three named individuals. Balmer Agency not among them.</div></div>
   </section>
 
   <section>
@@ -98,8 +93,8 @@
   </section>
 
   <div class="cta">
-    <h3>Want to talk more about your visibility in search?</h3>
-    <p>This isn't SEO as you know it. More people are asking AI than Google, and we help businesses show up in both.</p>
+    <h3>Search has changed.</h3>
+    <p>Let's chat about your search visibility and run through a free audit.</p>
     <a class="btn" href="https://calendar.app.google/KMWhVZmsAGEMrna2A">Let's have a chat</a>
     <a class="btn ghost" href="mailto:sarah@balmeragency.com.au?subject=AI%20search%20check%20for%20Balmer Agency">Email Sarah</a>
     <p class="alt">Been forwarded this? <a href="https://claude.ai/artifact/LUwdBJfETs9oUPaEmbnzcD">Run your own free check</a> — two minutes, no card.</p>
