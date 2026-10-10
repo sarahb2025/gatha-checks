@@ -51,11 +51,20 @@
   .btn:hover{background:var(--blue2)}
   .btn.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);margin-left:10px}
   .btn.ghost:hover{background:rgba(255,255,255,.14)}
+  .cta .who{font-size:14px;color:var(--hero-muted);max-width:520px;margin:-8px auto 24px}
   .cta .alt{margin-top:20px;font-size:14px;color:var(--hero-muted)}
   .cta .alt a{color:var(--mint);text-decoration:none;font-weight:500}
   footer{padding:40px 0 48px;text-align:center;font-size:13px;color:var(--muted)}
   footer a{color:var(--blue);text-decoration:none;font-weight:500}
   @media (max-width:600px){.score{grid-template-columns:1fr}.btn.ghost{margin:10px 0 0}.hero{padding-bottom:100px}}
+  .faq{background:#fff;border-radius:18px;box-shadow:var(--card-sh);padding:6px 24px}
+  .faq details{border-bottom:1px solid var(--line);padding:16px 0}
+  .faq details:last-child{border-bottom:0}
+  .faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--blue);font-size:20px;font-weight:500}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{color:var(--muted);font-size:14.5px;margin-top:10px}
 </style>
 </head>
 <body>
@@ -91,9 +100,21 @@
     <div class="why">{{GAP_1}}</div>
   </section>
 
+  <section>
+    <h2>AI search, explained</h2>
+    <div class="faq">
+      <details><summary>What is AI search?</summary><p>Instead of typing keywords into Google and clicking through ten blue links, people now ask a question in ChatGPT, Claude, Gemini or Perplexity and get one answer. Google itself now puts an AI answer above the results. If that answer names a business, that business gets the call. If it doesn’t name you, you’re invisible to that customer.</p></details>
+      <details><summary>How does it work?</summary><p>AI engines read the web, your Google Business listing, review sites and directories, then write an answer from what they find. They favour businesses that are described clearly and consistently everywhere, have pages that answer the actual question, and get mentioned by other sites. They don’t favour the biggest ad budget.</p></details>
+      <details><summary>Isn’t this just SEO?</summary><p>It overlaps, but it’s not the same. SEO gets you a position on a results page. AI search is about being the answer. A lot of businesses that rank fine on Google are nowhere in AI answers, because the content that wins a ranking isn’t the content an AI can quote.</p></details>
+      <details><summary>Why does the answer change each time?</summary><p>AI answers aren’t fixed like a ranking. Ask twice and the names shift. That’s why this page is a snapshot and a full audit measures how often you’re mentioned across many runs and many questions, not just one.</p></details>
+      <details><summary>What can be done about it?</summary><p>Most of it is practical: a clear description of what you do and where, pages that answer the questions customers ask, consistent listings, reviews, and structured data so the engines can read your site. Movement usually shows first in Google’s AI answers and Perplexity, with ChatGPT the slowest to catch up.</p></details>
+    </div>
+  </section>
+
   <div class="cta">
     <h3>Search has changed.</h3>
     <p>Let's chat about your search visibility and run through a free audit.</p>
+    <p class="who">You'll be talking to Sarah Balmer, who has spent 25 years helping Australian businesses through digital change, and built Gatha to do the same for AI search.</p>
     <a class="btn" href="https://calendar.app.google/KMWhVZmsAGEMrna2A">Let's have a chat</a>
     <a class="btn ghost" href="mailto:sarah@balmeragency.com.au?subject=AI%20search%20check%20for%20{{BUSINESS}}">Email Sarah</a>
     <p class="alt">Been forwarded this? <a href="https://claude.ai/artifact/LUwdBJfETs9oUPaEmbnzcD">Run your own free check</a> — two minutes, no card.</p>
